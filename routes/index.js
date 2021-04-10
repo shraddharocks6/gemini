@@ -6,4 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/three', function(req, res, next) {
+  res.render("d3.ejs");
+});
+
 module.exports = router;
