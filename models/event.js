@@ -4,12 +4,18 @@ var eventSchema = new mongoose.Schema({
   event_name:{
     type: String,
   },
+  organiser_name:{
+    type: String,
+  },
+  description:{
+    type: String,
+  },
   dateJoined: {
     type: String,
   },
-  image: {
+  image: [{
     type: String,
-  },
+  }],
   
 })
 

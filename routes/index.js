@@ -11,5 +11,11 @@ router.get('/', (req, res) => {
 router.get("/test-three", function (req, res) {
   res.render("index.ejs");
 });
+
+router.get("/multiple-upload", (req, res)=>{
+  res.render("upload-many.ejs");
+})
+
+
 //EXPORTING ROUTER TO BE REQUIRED IN app.js
 module.exports = router;

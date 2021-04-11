@@ -16,15 +16,16 @@ var Storage = multer.diskStorage({
   destination: "./public/uploads",
   filename: (req, file, cb) => {
     console.log(file);
-    cb(null, file.originalname + "_" + Date.now());
+    cb(null, Date.now()+ "_" +file.originalname  );
   }
 });
 var upload = multer({ storage: Storage });
 
-//Joining Application Page  (POST)
-router.post('/upload', upload.single('file'), async (req, res) => {
 
-  console.log(req.body);
+//Joining Application Page  (POST)
+router.post('/upload', upload.array('file', 15), async (req, res) => {
+
+  console.log(req.files);
   var d = new Date();
   yy = '';
   yy = d.getFullYear();
@@ -53,9 +54,11 @@ router.post('/upload', upload.single('file'), async (req, res) => {
   dateJoined = dd + '/' + mm + '/' + yy;
   // console.log(dateJoined);
   const newEvent = await new Event({
-   
+    description: req.body.description,  
+    organiser_name: req.body.organiser_name,
+    event_name: req.body.event_name,  
     dateJoined: dateJoined,
-    image: req.file.filename,
+    image: req.files.filename,
   });
 
  
@@ -71,6 +74,22 @@ router.post('/upload', upload.single('file'), async (req, res) => {
     console.log("We got some error");
     res.send("There was error" + err);
   }
+});
+
+
+
+//just testing
+var multiple_upload = multer({ storage : Storage }).array('file',15);
+
+router.post('/multiple-upload',function(req,res){
+  multiple_upload(req,res,function(err) {
+      console.log(req.body);
+      console.log(req.files);
+      if(err) {
+          return res.end("Error uploading file.");
+      }
+      console.log("File is uploaded");
+  });
 });
 
 
