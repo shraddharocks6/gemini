@@ -20,7 +20,7 @@ app.use(bodyParser.json())
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb+srv://mridul:mridul@cluster0.e24jp.mongodb.net/hack36?retryWrites=true&w=majority';
+var mongoDB = 'mongodb+srv://<Username>:<Password>@cluster0.e24jp.mongodb.net/hack36?retryWrites=true&w=majority';
 
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
