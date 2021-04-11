@@ -53,12 +53,18 @@ router.post('/upload', upload.array('file', 15), async (req, res) => {
   }
   dateJoined = dd + '/' + mm + '/' + yy;
   // console.log(dateJoined);
+  var arr = [];
+  (req.files).forEach(function(item){
+    console.log(item.filename);
+    arr.push(item.filename);
+  })
+
   const newEvent = await new Event({
     description: req.body.description,  
     organiser_name: req.body.organiser_name,
     event_name: req.body.event_name,  
     dateJoined: dateJoined,
-    image: req.files.filename,
+    image: arr,
   });
 
  
@@ -67,7 +73,7 @@ router.post('/upload', upload.array('file', 15), async (req, res) => {
     const savedEvent = await newEvent.save();
     if (savedEvent) {
       console.log("new event saved " + savedEvent);
-      res.send("Application Sent");
+      res.redirect('/');
       // res.render("success.ejs");
     }
   } catch (err) {
