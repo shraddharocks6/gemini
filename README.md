@@ -6,7 +6,7 @@
 
 
 ## Introduction:
-  This is a Virtual Art Gallery. Organisers can host Art Galeeries and User Can Visit Art Galleries.
+  This is a Virtual Art Gallery. Organisers can host Art Galleries and User Can Visit Art Galleries.
   
 ## Demo Video Link:
   <a href="https://youtu.be/dQw4w9WgXcQ">https://youtu.be/dQw4w9WgXcQ</a>
