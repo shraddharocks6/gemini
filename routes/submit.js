@@ -73,7 +73,7 @@ router.post('/upload', upload.array('file', 15), async (req, res) => {
     const savedEvent = await newEvent.save();
     if (savedEvent) {
       console.log("new event saved " + savedEvent);
-      res.send("Application Sent");
+      res.redirect('/');
       // res.render("success.ejs");
     }
   } catch (err) {
