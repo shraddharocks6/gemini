@@ -1,4 +1,7 @@
-const router = require("express").Router();
+
+//REQUIRING PACKAGES, MODULES AND OTHER EXTERNAL FILES
+var express = require("express"),
+  router = express.Router();
 
 //LANDING PAGE
 router.get('/', (req, res) => {
@@ -6,9 +9,6 @@ router.get('/', (req, res) => {
 });
 
 
-//REQUIRING PACKAGES, MODULES AND OTHER EXTERNAL FILES
-var express = require("express"),
-  router = express.Router();
 
 
 router.get("/test-three", function (req, res) {
