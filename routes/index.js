@@ -1,13 +1,10 @@
-
 //REQUIRING PACKAGES, MODULES AND OTHER EXTERNAL FILES
-var express = require("express"),
-  router = express.Router();
+const router = require("express").Router();
 
 //LANDING PAGE
 router.get('/', (req, res) => {
   res.render('home.ejs');
 });
-
 
 
 

@@ -19,7 +19,8 @@
     <script src="/scripts/three/OrbitControls.js"></script>
     <script>
       const scene = new THREE.Scene();
-      scene.background = new THREE.Color(0xdddddd);
+      // scene.background = new THREE.Color(0xdddddd);
+      scene.background = new THREE.Color(0xccc000);
 
       const camera = new THREE.PerspectiveCamera(
         40,
@@ -86,19 +87,133 @@
       //PAINTINGS
       const geometry = new THREE.BoxGeometry(3.05, 1.9, 0.05);
 
-      var image1 = new THREE.TextureLoader().load(
+      var image1 = new THREE.TextureLoader().load();
+      var image2 = new THREE.TextureLoader().load();
+      var image3 = new THREE.TextureLoader().load(
+        "https://i.ibb.co/6Y3MTCM/product-500x500.jpg"
+      );
+      var image1a = new THREE.TextureLoader().load(
+        "https://img.staticmb.com/mbcontent//images/uploads/2020/7/What%20Kind%20of%20Paintings%20Does%20Your%20Home%20Need%20as%20per%20Vastu.jpg"
+      );
+      var image1b = new THREE.TextureLoader().load(
+        "https://i.ibb.co/582QXk7/im2.jpg"
+      );
+
+      var image2a = new THREE.TextureLoader().load(
+        "https://i.ibb.co/6Y3MTCM/product-500x500.jpg"
+      );
+      var image2b = new THREE.TextureLoader().load(
         "https://img.staticmb.com/mbcontent//images/uploads/2020/7/What%20Kind%20of%20Paintings%20Does%20Your%20Home%20Need%20as%20per%20Vastu.jpg"
       );
 
-      //RIGHT WALL
+      var image3a = new THREE.TextureLoader().load(
+        "https://i.ibb.co/582QXk7/im2.jpg"
+      );
+      var image3b = new THREE.TextureLoader().load(
+        "https://img.staticmb.com/mbcontent//images/uploads/2020/7/What%20Kind%20of%20Paintings%20Does%20Your%20Home%20Need%20as%20per%20Vastu.jpg"
+      );
 
-      const material1 = new THREE.MeshBasicMaterial({ map: image1 });
+      var image4a = new THREE.TextureLoader().load(
+        "https://img.staticmb.com/mbcontent//images/uploads/2020/7/What%20Kind%20of%20Paintings%20Does%20Your%20Home%20Need%20as%20per%20Vastu.jpg"
+      );
+      var image4b = new THREE.TextureLoader().load(
+        "https://i.ibb.co/6Y3MTCM/product-500x500.jpg"
+      );
+
+      var image5a = new THREE.TextureLoader().load(
+        "https://img.staticmb.com/mbcontent//images/uploads/2020/7/What%20Kind%20of%20Paintings%20Does%20Your%20Home%20Need%20as%20per%20Vastu.jpg"
+      );
+      var image5b = new THREE.TextureLoader().load(
+        "https://i.ibb.co/582QXk7/im2.jpg"
+      );
+
+      //FOR PAINTING DESCRIPTION
+
+      var arr = [
+        [
+          "https://img.staticmb.com/mbcontent//images/uploads/2020/7/What%20Kind%20of%20Paintings%20Does%20Your%20Home%20Need%20as%20per%20Vastu.jpg",
+          "https://i.ibb.co/582QXk7/im2.jpg",
+        ],
+        [
+          "https://i.ibb.co/6Y3MTCM/product-500x500.jpg",
+          "https://i.ibb.co/582QXk7/im2.jpg",
+        ],
+      ];
+      var arr1 = [
+        "https://img.staticmb.com/mbcontent//images/uploads/2020/7/What%20Kind%20of%20Paintings%20Does%20Your%20Home%20Need%20as%20per%20Vastu.jpg",
+        "https://i.ibb.co/582QXk7/im2.jpg",
+      ];
+      var arr2 = [
+        "https://i.ibb.co/6Y3MTCM/product-500x500.jpg",
+        "https://i.ibb.co/582QXk7/im2.jpg",
+      ];
+      var textureToShow = 0;
+
+      var material1 = new THREE.MeshBasicMaterial();
+      material1.map = image1a;
+      var material2 = new THREE.MeshBasicMaterial();
+      material2.map = image2a;
+      var material3 = new THREE.MeshBasicMaterial();
+      material3.map = image3a;
+      var material4 = new THREE.MeshBasicMaterial();
+      material4.map = image4a;
+      var material5 = new THREE.MeshBasicMaterial();
+      material5.map = image5a;
+
+      // var loader1 = new THREE.TextureLoader();
+
+      // loader1.load(arr1[textureToShow], function (tex) {
+      //   material1.map = tex;
+      //   textureToShow++;
+      // });
+
+      // loader1.load(arr1[textureToShow], function (tex) {
+      //   material1.map = tex;
+      //   textureToShow++;
+      // });
+
       const cube1 = new THREE.Mesh(geometry, material1);
       scene.add(cube1);
       cube1.position.set(7.82, 1.5, 2.9);
       cube1.rotation.y = (90 / 180) * Math.PI;
 
-      const cube2 = new THREE.Mesh(geometry, material1);
+      var canvas = document.getElementsByTagName("canvas")[0];
+
+      canvas.addEventListener("click", function () {
+        console.log("CLicked " + textureToShow);
+        // loader1.load(arr1[textureToShow], function (tex) {
+        //   material1.map = tex;
+        //   textureToShow++;
+        //   if (textureToShow > arr.length - 1) {
+        //     textureToShow = 0;
+        //   }
+        // });
+        textureToShow++;
+        if (textureToShow === 1) {
+          console.log("1 true");
+          material1.map = image1b;
+          material2.map = image2b;
+          material3.map = image3b;
+          material4.map = image4b;
+          material5.map = image5b;
+        } else {
+          console.log("0 true");
+          material1.map = image1a;
+          material2.map = image2a;
+          material3.map = image3a;
+          material4.map = image4a;
+          material5.map = image5a;
+        }
+        console.log(material1);
+        if (textureToShow > 1) textureToShow = 0;
+      });
+
+      //RIGHT WALL
+
+      // const material1 = new THREE.MeshBasicMaterial({ map: image1 });
+      const m2 = new THREE.MeshBasicMaterial({ map: image2 });
+
+      const cube2 = new THREE.Mesh(geometry, material2);
       scene.add(cube2);
       cube2.position.set(7.82, 1.5, 6.3);
       cube2.rotation.y = (90 / 180) * Math.PI;
@@ -108,17 +223,17 @@
       cube3.position.set(7.82, 1.5, 9.7);
       cube3.rotation.y = (90 / 180) * Math.PI;
 
-      const cube4 = new THREE.Mesh(geometry, material1);
+      const cube4 = new THREE.Mesh(geometry, material3);
       scene.add(cube4);
       cube4.position.set(7.82, 1.5, -3.0);
       cube4.rotation.y = (90 / 180) * Math.PI;
 
-      const cube5 = new THREE.Mesh(geometry, material1);
+      const cube5 = new THREE.Mesh(geometry, material4);
       scene.add(cube5);
       cube5.position.set(7.82, 1.5, -6.4);
       cube5.rotation.y = (90 / 180) * Math.PI;
 
-      const cube6 = new THREE.Mesh(geometry, material1);
+      const cube6 = new THREE.Mesh(geometry, material5);
       scene.add(cube6);
       cube6.position.set(7.82, 1.5, -9.8);
       cube6.rotation.y = (90 / 180) * Math.PI;
@@ -130,22 +245,22 @@
       cube7.position.set(-7.82, 1.5, 2.9);
       cube7.rotation.y = (90 / 180) * Math.PI;
 
-      const cube8 = new THREE.Mesh(geometry, material1);
+      const cube8 = new THREE.Mesh(geometry, material2);
       scene.add(cube8);
       cube8.position.set(-7.82, 1.5, 6.3);
       cube8.rotation.y = (90 / 180) * Math.PI;
 
-      const cube9 = new THREE.Mesh(geometry, material1);
+      const cube9 = new THREE.Mesh(geometry, material3);
       scene.add(cube9);
       cube9.position.set(-7.82, 1.5, 9.7);
       cube9.rotation.y = (90 / 180) * Math.PI;
 
-      const cube10 = new THREE.Mesh(geometry, material1);
+      const cube10 = new THREE.Mesh(geometry, material4);
       scene.add(cube10);
       cube10.position.set(-7.82, 1.5, -1.0);
       cube10.rotation.y = (90 / 180) * Math.PI;
 
-      const cube11 = new THREE.Mesh(geometry, material1);
+      const cube11 = new THREE.Mesh(geometry, material5);
       scene.add(cube11);
       cube11.position.set(-7.82, 1.5, -4.4);
       cube11.rotation.y = (90 / 180) * Math.PI;
@@ -157,16 +272,17 @@
 
       //FRONT WALL
 
-      const cube13 = new THREE.Mesh(geometry, material1);
+      const cube13 = new THREE.Mesh(geometry, material2);
       scene.add(cube13);
       cube13.position.set(-5.7, 1.5, -9.9);
+
       //   cube13.rotation.y = (90 / 180) * Math.PI;
 
-      const cube14 = new THREE.Mesh(geometry, material1);
+      const cube14 = new THREE.Mesh(geometry, material3);
       scene.add(cube14);
       cube14.position.set(-2.2, 1.5, -9.9);
 
-      const cube15 = new THREE.Mesh(geometry, material1);
+      const cube15 = new THREE.Mesh(geometry, material4);
       scene.add(cube15);
       cube15.position.set(1.3, 1.5, -9.9);
 
@@ -174,6 +290,8 @@
         renderer.render(scene, camera);
         requestAnimationFrame(animate);
       }
+
+      function loadingTexture() {}
     </script>
   </body>
 </html>
