@@ -9,7 +9,7 @@
   This is a Virtual Art Gallery. Organisers can host Art Galleries and User Can Visit Art Galleries.
   
 ## Demo Video Link:
-  <a href="https://youtu.be/dQw4w9WgXcQ">https://youtu.be/dQw4w9WgXcQ</a>
+  <a href="https://drive.google.com/file/d/1fu5LhqX1efcisSHtGP_5U3mwomOwDdtk/view?usp=sharing">Video Presentation</a>
   
 ## Presentation Link:
   <a href="https://drive.google.com/file/d/17ki3hz0_x6WQnHRVeQr_IcPuRPeU7Qdk/view?usp=sharing"> This is our PPT. </a>
